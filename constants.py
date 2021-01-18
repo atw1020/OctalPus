@@ -24,8 +24,8 @@ Private Channel IDs
 _test_server_game_codes_id = 799754870365093929
 _test_server_emote_reactions_id = 800087882874093638
 
-_actual_server_game_codes_id = None
-_actual_server_emote_reactions_id = None
+_actual_server_game_codes_id = 794037639707623444
+_actual_server_emote_reactions_id = 799447057802199040
 
 """
 
@@ -33,8 +33,8 @@ Public Channel IDs
 
 """
 
-game_codes_channel_id = _test_server_game_codes_id
-reaction_emotes_channel_id = _test_server_emote_reactions_id
+game_codes_channel_id = _actual_server_game_codes_id
+reaction_emotes_channel_id = _actual_server_emote_reactions_id
 
 """
 
@@ -54,4 +54,5 @@ Colors
 
 """
 
-color_roles = ["Red", "Blue", "Green", "Pink"]
+color_roles = ["Red", "Blue", "Green", "Pink", "Orange", "Yellow",
+               "Black", "White", "Purple", "Brown", "Cyan", "Lime"]
