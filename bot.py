@@ -81,8 +81,6 @@ def create_bot():
         :return:
         """
 
-        print(user, "reacted with", reaction.emoji.name)
-
         if type(reaction.emoji) != str:
             emote_name = reaction.emoji.name
         else:
@@ -92,11 +90,20 @@ def create_bot():
 
             if utils.is_react_message(reaction.message):
 
+                print("-" * 30)
+
+                print("UPDATE:")
+                print(emote_name)
+
                 # check to see if the emote is a role
                 if emote_name in constants.color_roles:
 
+                    print("reaction is a color role")
+
                     # remove all of the other reactions to this message this user has
                     reactions = reaction.message.reactions
+
+                    print("removing old reactions...", end="")
 
                     # go through all the reactions
                     for _reaction in reactions:
@@ -105,20 +112,32 @@ def create_bot():
                             # if this isn't the new reaction, remove it
                             await _reaction.remove(user)
 
+                    print("complete!")
+
                     # get the server this happened on
                     guild = reaction.message.guild
 
                     # create a roles dictionary for the roles on that server
                     roles_dict = utils.mk_color_to_role_dict(guild.roles)
 
+                    print("removing old roles...", end="")
+
                     # remove the user's color based roles
                     await utils.remove_color_roles(user)
+
+                    print("complete!")
+
+                    print("adding new roles...", end="")
 
                     # add the role for this emote
                     await user.add_roles(roles_dict[emote_name])
 
+                    print("complete!")
+
                 else:
-                    # if it's not a color reaction, remove the message
+                    # if it's not a color reaction, remove the reaction
+
+                    print("was not a color emote")
 
                     await reaction.remove(user)
 
