@@ -81,6 +81,8 @@ def create_bot():
         :return:
         """
 
+        print(user, "reacted with", reaction.emoji.name)
+
         if type(reaction.emoji) != str:
             emote_name = reaction.emoji.name
         else:
